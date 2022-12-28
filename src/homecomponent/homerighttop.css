@@ -1,0 +1,61 @@
+.right-div-alpha-tab-main {
+  margin-top: 3vh;
+  margin-left: 20vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.right-div-alpha-tab {
+  width: 80vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 3vh;
+}
+
+.right-div-alpha-tab {
+  height: 70px;
+  width: 95%;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  border: #eaeeed solid 1px;
+  padding: 3vh;
+}
+
+.right-div-alpha-wrapper {
+  margin-left: 20vw;
+  width: 80vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 3vh;
+}
+
+.right-div-alpha-tab ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.right-div-alpha-tab ul li {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0vh 20px;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.right-div-alpha-tab ul li:hover {
+  color: #ff555a;
+  transition: 0.3s ease-in-out;
+}
+
+.alpha-current {
+  height: auto;
+  width: 100%;
+  padding: 3vh 5vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: #707070;
+}

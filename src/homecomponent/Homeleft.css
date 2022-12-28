@@ -1,0 +1,65 @@
+.left-div-alpha
+{
+    position: fixed;
+    height: 100%;
+    width: 18vw;
+    border-right: solid #dbdbdb 1px;
+    padding: 4vh 3vh;
+}
+
+.alhpa-logo
+{
+    display: flex;
+    height: 40px;
+}
+
+.alpha-logo-img
+{
+    display: flex;
+    align-items: center;
+    width: 40px;
+}
+.alpha-logo-name
+{
+    padding: 5px 0px 0px 5px;
+    display: flex;
+    align-self: center;
+    font-family: sukar;
+    font-size: 27px;
+}
+
+.alhpa-links
+{
+   
+    padding: 5vh 2vh;
+    
+}
+.alhpa-links-con
+{
+    display: flex;
+    align-items: center;
+    padding: 15px 0vh;
+}
+.alhpa-links-con img
+{
+   height: 23px;
+
+}
+
+.alhpa-links-con span
+{
+    display: flex;
+    align-items: center;
+    height: 23px;
+    font-size: 15px !important;
+    padding-left: 20px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+}   
+
+.alhpa-links-con span:hover
+{
+    transform: scale(1.08);
+    transition: 0.3s ease-in-out;
+}   

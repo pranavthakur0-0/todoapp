@@ -1,0 +1,17 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+}
+@font-face {
+  font-family: sukar;
+  src: url(../src/Font/Sukarblack/Sukar_Bold.ttf);
+}
+.section
+{
+  font-family: Arial, Helvetica, sans-serif !important;
+  height: auto;
+  width: 100vw;
+}
