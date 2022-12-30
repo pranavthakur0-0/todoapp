@@ -13,14 +13,73 @@
 {
     height: auto;
     width: 75vw;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
 }
 
 .editor-main-right
 {
+    color: white;
     position: fixed;
     height: 100vh;
     width: 25vw;
     left: 75vw;
+    background-color: rgb(32, 32, 32);
+}
+
+.editor-content-wrapper, .editor-titles-wrapper, .editor-tags-wrapper
+{
+    margin-top: 30px;
+    padding: 0px 55px;
+}
+
+.editor-content-wrapper h3, .editor-titles-wrapper h3, .editor-tags-wrapper h3
+{
+    margin-bottom: 8px;
+}
+
+.editor-titles, .editor-content ,.editor-tags
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+.editor-titles-1, .editor-content-1
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    background-color: black;
+    width: 75px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.editor-tags-1
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    min-width: 50px;
+    width: auto;
+    border-radius: 7px;
     background-color: blue;
+    cursor: pointer;
+}
+
+.editor-tags-2
+{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.editor-color-1
+{
+    cursor: pointer;
+    height: 35px;
+    min-width: 35px;
+    background-color: black;
+    border-radius: 50%;
 }
