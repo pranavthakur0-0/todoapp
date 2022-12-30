@@ -1,5 +1,7 @@
 import { forwardRef, useEffect, useState } from "react";
 import { RxTrash } from "react-icons/rx";
+import {AiOutlineFieldTime, AiOutlineSave} from "react-icons/ai";
+import {HiOutlineBars3BottomLeft } from "react-icons/hi2";
 import "./compopup.css";
 
 const idb =
@@ -9,7 +11,7 @@ const idb =
   window.msIndexedDB ||
   window.shimIndexedDB;
 
-const database = ["todo", "doing", "done"];
+const database = ["todo", "doing", "done", "notes"];
 
 const createCollection = () => {
     
@@ -75,7 +77,7 @@ const closer = ()=>
   {
     let today = new Date();
     const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
-    let date= dateOrdinal(today.getDate())+"/"+formatter.format(new Date())+"/"+today.getFullYear();
+    let date= dateOrdinal(today.getDate())+"."+formatter.format(new Date())+"."+today.getFullYear();
     return date
   }
 
@@ -101,7 +103,6 @@ const closer = ()=>
                     {
                         db.close();
                     };
-                    alert("Added");
                 }
                 list.onerror =(error=>
                     {
@@ -112,7 +113,6 @@ const closer = ()=>
         setdesc("");
         event.target.reset();
         props.trigger(false);
-      
     }
   };
 
@@ -136,11 +136,21 @@ const closer = ()=>
                         {
                             handleClick(e,"todo");
                         }} className="task-adder" >
-                        <label htmlFor="todoname">Task Name</label>
-                        <input type="text" id="todoname" name="todoname" onChange={todocapture} />
-                        <label htmlFor="todoname">Task Name</label>
-                        <textarea type="text" id="tododesc" name="tododesc" onChange={todocapture} />
-                        <input type="submit" value="submit"/>
+                       <div className="task-adder-content-wraooer">
+                       <div >       <AiOutlineFieldTime className="popup-icons-adder" />      {datecaller()}</div>
+
+                       <div className="input-icon-adder">
+                       <HiOutlineBars3BottomLeft className="popup-icons-adder" ></HiOutlineBars3BottomLeft>
+                       <div className="adder-content-wrapper">
+                        <input type="text" id="todoname" name="todoname" onChange={todocapture} placeholder="Task Heading" />
+                        <textarea type="text" id="tododesc" name="tododesc" onChange={todocapture} placeholder="Task Description" />
+                       </div>
+                       </div>
+                    <div className="input-icon-save">
+                    <AiOutlineSave className="save-icon" /> <input className="adder-submit" type="submit" value="Save"/>
+                    </div>
+                       </div>
+               
                         </form>
                     </div>
                 </>
@@ -152,11 +162,20 @@ const closer = ()=>
                             handleClick(e,"doing");
                         }}
                         className="task-adder">
-                    <label htmlFor="todoname">Task Name</label>
-                    <input type="text" id="todoname" name="todoname" onChange={todocapture} />
-                    <label htmlFor="todoname">Task Name</label>
-                    <textarea type="text" id="tododesc" name="tododesc" onChange={todocapture} />
-                    <input type="submit" value="submit"/>
+                         <div className="task-adder-content-wraooer">
+                       <div >       <AiOutlineFieldTime className="popup-icons-adder" />      {datecaller()}</div>
+
+                       <div className="input-icon-adder">
+                       <HiOutlineBars3BottomLeft className="popup-icons-adder" ></HiOutlineBars3BottomLeft>
+                       <div className="adder-content-wrapper">
+                        <input type="text" id="todoname" name="todoname" onChange={todocapture} placeholder="Task Heading" />
+                        <textarea type="text" id="tododesc" name="tododesc" onChange={todocapture} placeholder="Task Description" />
+                       </div>
+                       </div>
+                    <div className="input-icon-save">
+                    <AiOutlineSave className="save-icon" /> <input className="adder-submit" type="submit" value="Save"/>
+                    </div>
+                       </div>
                     </form>
                 </div>
             </>
@@ -168,11 +187,20 @@ const closer = ()=>
                             handleClick(e,"done");
                         }}
                         className="task-adder">
-                    <label htmlFor="todoname">Task Name</label>
-                    <input type="text" id="todoname" name="todoname" onChange={todocapture} />
-                    <label htmlFor="todoname">Task Name</label>
-                    <textarea type="text" id="tododesc" name="tododesc" onChange={todocapture} />
-                    <input type="submit" value="submit"/>
+                       <div className="task-adder-content-wraooer">
+                       <div >       <AiOutlineFieldTime className="popup-icons-adder" />      {datecaller()}</div>
+
+                       <div className="input-icon-adder">
+                       <HiOutlineBars3BottomLeft className="popup-icons-adder" ></HiOutlineBars3BottomLeft>
+                       <div className="adder-content-wrapper">
+                        <input type="text" id="todoname" name="todoname" onChange={todocapture} placeholder="Task Heading" />
+                        <textarea type="text" id="tododesc" name="tododesc" onChange={todocapture} placeholder="Task Description" />
+                       </div>
+                       </div>
+                    <div className="input-icon-save">
+                    <AiOutlineSave className="save-icon" /> <input className="adder-submit" type="submit" value="Save"/>
+                    </div>
+                       </div>
                     </form>
                 </div>
             </>

@@ -1,12 +1,11 @@
 import todo from "./images/todo.svg";
-import doing from "./images/doing.svg";
-import done from "./images/done.svg";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { RxTrash } from "react-icons/rx";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useEffect, useState } from "react";
 import Compopup from "./Compopup.jsx";
 import "./dashboard.css";
+import DOMPurify from "dompurify";
 
 const idb =
   window.indexedDB ||
@@ -18,7 +17,7 @@ const idb =
 function Home() {
   const [popup, setpopup] = useState(false);
   const [prop, setprop] = useState(false);
-
+  const [change, setchange] = useState(false);
   const [listdata, setlistdata] = useState([]);
   const [doinglist, setdoinglist] = useState([]);
   const [donelist, setdonelist] = useState([]);
@@ -108,7 +107,6 @@ function Home() {
   }
 
   function deletelist(e, name) {
-    console.log(name);
     const dbPromise = idb.open(`${name}`, 1);
     dbPromise.onsuccess = () => {
       const db = dbPromise.result;
@@ -156,6 +154,57 @@ function Home() {
     };
   }
 
+
+
+
+
+  function handleClick (event,name){
+    const dbPromise = idb.open(`${name}`, 1);
+        dbPromise.onsuccess = ()=>
+        {
+            const db = dbPromise.result;
+            const tx = db.transaction(`${name}list`, "readwrite");
+            const todolist = tx.objectStore(`${name}list`);
+                const list = todolist.put({
+                    id : event.id,
+                    task:event.task,
+                    desc:event.desc,
+                    date: event.date,
+                })
+                list.onsuccess= ()=>
+                {
+                    tx.oncomplete = ()=>
+                    {
+                        db.close();
+                    };
+    
+                }
+                list.onerror =(error=>
+                    {
+                        console.log("Error", error);
+                    })
+        }  
+  };
+
+
+
+
+
+
+function changelist(index,sub,add)
+  {
+        handleClick(index,add);
+        deletelist(index,sub);
+        setchange(current => !current);
+  }
+
+  useEffect(() => {
+    getallDate();
+    doingdata();
+    donedata();
+    // eslint-disable-next-line
+  }, [change]);
+  
   useEffect(() => {
     getallDate();
     doingdata();
@@ -168,9 +217,9 @@ function Home() {
       <div className="right-div-alpha-wrapper">
         <div className="right-div-alpha-wrapper-box">
           <div className="right-alpha-todo">
-            <span>To do</span>
+            <span>To do <span className="numberoftodo">{listdata.length}</span></span>
             <IoIosCloseCircleOutline
-              className="reset-list"
+              className="reset-list circular-rotation"
               onClick={(e) => {
                 clearstore("todo");
               }}
@@ -182,20 +231,22 @@ function Home() {
               <div key={i} className="right-alpha-todo-content">
                 <div className="right-alpha-todo-content-heading">
                   <img src={todo} alt="mytask" />
-                  <h4>{index.task}</h4>
+                  <h4 dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(index.task)}}></h4>
                 </div>
-                <p>{index.desc}</p>
+                <p dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(index.desc)}}></p>
                 <div className="right-alpha-todo-control">
                   <span>{index.date}</span>
                   <div>
-                    <img
-                      className="doing-icon-bottom"
-                      src={doing}
-                      alt="mytask"
-                    />
-                    <img className="done-icon-bottom" src={done} alt="mytask" />
+                  <span className="doing-icon-bottom" onClick={e=>
+                {
+                    changelist(index,"todo","doing")
+                }}/>
+                    <span className="done-icon-bottom" onClick={e=>
+                {
+                    changelist(index,"todo","done")
+                }}/>
                     <RxTrash
-                      className="trash-icon"
+                      className="trash-icon circular-rotation"
                       onClick={(e) => {
                         deletelist(index, "todo");
                       }}
@@ -214,9 +265,9 @@ function Home() {
 
         <div className="right-div-alpha-wrapper-box">
           <div className="right-alpha-todo">
-            <span>Doing</span>
+            <span>Doing <span className="numberofdoing">{doinglist.length}</span></span>
             <IoIosCloseCircleOutline
-              className="reset-list"
+              className="reset-list circular-rotation"
               onClick={(e) => {
                 clearstore("doing");
               }}
@@ -227,20 +278,22 @@ function Home() {
               <div key={i} className="right-alpha-todo-content">
                 <div className="right-alpha-todo-content-heading">
                   <img src={todo} alt="mytask" />
-                  <h4>{index.task}</h4>
+                  <h4 dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(index.task)}}></h4>
                 </div>
-                <p>{index.desc}</p>
+                <p dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(index.desc)}}></p>
                 <div className="right-alpha-todo-control">
                   <span>{index.date}</span>
                   <div>
-                    <img
-                      className="doing-icon-bottom"
-                      src={doing}
-                      alt="mytask"
-                    />
-                    <img className="done-icon-bottom" src={done} alt="mytask" />
+                  <span className="todo-icon-bottom" onClick={e=>
+                {
+                    changelist(index,"doing","todo")
+                }}/>
+                  <span className="done-icon-bottom" onClick={e=>
+                {
+                    changelist(index,"doing","done")
+                }}/>
                     <RxTrash
-                      className="trash-icon"
+                      className="trash-icon circular-rotation"
                       onClick={(e) => {
                         deletelist(index, "doing");
                       }}
@@ -259,9 +312,9 @@ function Home() {
 
         <div className="right-div-alpha-wrapper-box">
           <div className="right-alpha-todo">
-            <span>Done</span>
+            <span>Done <span className="numberofdone">{donelist.length}</span></span>
             <IoIosCloseCircleOutline
-              className="reset-list"
+              className="reset-list circular-rotation"
               onClick={(e) => {
                 clearstore("done");
               }}
@@ -272,20 +325,22 @@ function Home() {
               <div key={i} className="right-alpha-todo-content">
                 <div className="right-alpha-todo-content-heading">
                   <img src={todo} alt="mytask" />
-                  <h4>{index.task}</h4>
+                  <h4 dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(index.task)}}></h4>
                 </div>
-                <p>{index.desc}</p>
+                <p dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(index.desc)}}></p>
                 <div className="right-alpha-todo-control">
                   <span>{index.date}</span>
                   <div>
-                    <img
-                      className="doing-icon-bottom"
-                      src={doing}
-                      alt="mytask"
-                    />
-                    <img className="done-icon-bottom" src={done} alt="mytask" />
+                  <span className="todo-icon-bottom" onClick={e=>
+                {
+                    changelist(index,"done","todo")
+                }}/>
+                    <span className="doing-icon-bottom" onClick={e=>
+                {
+                    changelist(index,"done","doing")
+                }}/>
                     <RxTrash
-                      className="trash-icon"
+                      className="trash-icon circular-rotation"
                       onClick={(e) => {
                         deletelist(index, "done");
                       }}

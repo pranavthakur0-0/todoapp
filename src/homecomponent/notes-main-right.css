@@ -1,0 +1,48 @@
+.notes-main-right
+{
+    margin-left: 25vw;
+    width: 70vw;
+    height: 70px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notes-main-right h2
+{
+    font-size: 40px !important;
+    font-weight: 400;
+}
+
+.notes-create-button
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 130px;
+    background-color: #4a86ff;
+    color: white;
+    border-radius: 30px;
+    transition: 0.2s ease-in-out;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.notes-create-button:hover
+{
+    background-color: #195ee9;
+}
+
+.notes-main-right-content
+{
+    height: auto;
+    margin-left: 25vw;
+    width: 70vw;
+    background-color: #F9F9F9;
+    margin-top: 3vh;
+    height: 100vh;
+    padding: 3vh;
+    border-radius: 10px;
+}

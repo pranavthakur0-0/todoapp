@@ -37,7 +37,7 @@
 .alhpa-links-con
 {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 15px 0vh;
 }
 .alhpa-links-con img
@@ -46,6 +46,19 @@
 
 }
 
+.alhpa-links-con div
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.alhpa-links-con div ul
+{
+    height: auto;
+    padding-left: 40px;
+    margin-top: 5px;
+    line-height: 24px;
+}
 .alhpa-links-con span
 {
     display: flex;
@@ -63,3 +76,4 @@
     transform: scale(1.08);
     transition: 0.3s ease-in-out;
 }   
+

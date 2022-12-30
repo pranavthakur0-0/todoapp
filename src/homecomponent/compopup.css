@@ -12,21 +12,23 @@
 
 .main-popup-task
 {
-    min-height: 50vh;
+    height: auto;
     border-radius: 10px;
-    min-width: 40vw;
+    min-width: 400px;
     background-color: rgb(255, 255, 255);
-    padding: 30px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
+    box-shadow: rgba(0, 0, 0, 0.178) 0px 8px 30px;
 }
 
 .main-popup-task-title-bar
 {
-    height: 5vh;
+    height: auto;
     width: 100%;
     display: flex;
+    padding: 20px 20px 15px 20px; 
     justify-content: space-between;
     margin-bottom: 3vh;
+    background-color: #f4e2ff;
+    align-items: center;
 }
 
 .main-popup-task-title-bar span
@@ -44,10 +46,120 @@
 {
     cursor: pointer;
     margin-left: 1px;
+    transition: 0.4s ease-in-out;
 }
+
+.circular-rotation
+{
+    transition: 0.4s ease-in-out;
+}
+.pointer:hover , .circular-rotation:hover
+{
+    transform: rotate(360deg);
+}
+
 
 .task-adder
 {
     display: flex;
     flex-direction: column;
+}
+textarea {
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .task-adder-content-wraooer
+ {
+    display: flex;
+    flex-direction: column;
+ }
+
+ .task-adder-content-wraooer div{
+    display: flex;
+    align-items: center;
+ }
+
+ .popup-icons-adder
+ {
+    margin: 0px 20px 0px 15px;
+   font-size: 30px;
+   color: #B7B6B7;
+ }
+
+ .adder-content-wrapper
+ {
+    width: 100%;
+    display: flex;
+    align-items: flex-start !important;
+    flex-direction: column;
+    margin-top: 15px;
+ }
+
+ .input-icon-adder{
+    display: flex;
+    align-items: baseline !important;
+ }
+
+ #todoname ,#tododesc
+ {
+    padding: 5px 13px;
+    border: 0px;
+    background-color: #E7F0FE;
+    height: 40px;
+    width: 340px;
+    color: #000000;;
+    margin-right: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+ }
+
+ #tododesc{
+    margin-top: 15px;
+    height: 70px;
+ }
+
+ #tododesc::placeholder{
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ #todoname::placeholder
+ {
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ textarea:focus, input:focus{
+    outline: none;
+}
+
+input{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-icon-save
+{
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.save-icon
+{
+    color:#B7B6B7;
+}
+
+.adder-submit
+{
+    margin-left: 15px;
+    height: 35px;
+    width: 80px;
+    border-radius: 8px;
+    border: none;
+    background-color: #7ec9ff;
+    color: white;
+    cursor: pointer;
+
 }

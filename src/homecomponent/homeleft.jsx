@@ -3,6 +3,7 @@ import Logo from "./images/Noddy.svg"
 import Home from "./images/home.svg"
 import Task from "./images/mytask.svg"
 import Notes from "./images/notes.svg"
+import { Link } from 'react-router-dom'
 
 function Homeleft() {
   return (
@@ -27,7 +28,8 @@ function Homeleft() {
 
           <div className="alhpa-links-con">
             <img src={Notes} alt="notes-icon" />
-              <span>Notes</span>
+            <span><Link to="/notes">Notes</Link></span>
+     
           </div>
          
 
