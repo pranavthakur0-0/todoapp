@@ -1,29 +1,64 @@
+
 .editor-main-container
 {
-    height: 100vh;
+    overflow-y: hidden;
+    min-height: 100vh;
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100vw;
-    background-color: rgba(248, 248, 248, 0.573);
-    display: flex
+    background-color: #191919;
+    padding:5vh 5vw;
 }
+.editor-main-left-wrapper
+{
+    display: flex;
+}
+
+.editor-main-container h1
+{
+    margin-top: 5vh;
+    font-size: 60px;
+}
+
 
 .editor-main-left
 {
+    color: white;
     height: auto;
-    width: 75vw;
-    background-color: rgb(255, 255, 255);
+    width: 65vw;
+    padding: 5vh;
+    background-color: #292929;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid grey;
+
+}
+
+.my-notes
+{
+    font-size: 40px !important;
+    margin: 0px !important;
+    color: white;
+    margin-bottom: 10px !important;
 }
 
 .editor-main-right
 {
-    color: white;
-    position: fixed;
-    height: 100vh;
+    padding-top: 10px;
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    height: 100%;
     width: 25vw;
-    left: 75vw;
-    background-color: rgb(32, 32, 32);
+    margin-left: 1vw;
+    background-color: #191919;
+    border: 1px solid rgb(255, 255, 255);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 40px;
 }
 
 .editor-content-wrapper, .editor-titles-wrapper, .editor-tags-wrapper
@@ -49,9 +84,10 @@
     justify-content: center;
     align-items: center;
     height: 45px;
-    background-color: black;
+    background-color: #4a86ff;;
     width: 75px;
     cursor: pointer;
+    color: #ffffff;
     border-radius: 7px;
 }
 
@@ -64,7 +100,7 @@
     min-width: 50px;
     width: auto;
     border-radius: 7px;
-    background-color: blue;
+    background-color: #4a86ff;;
     cursor: pointer;
 }
 
@@ -78,8 +114,61 @@
 .editor-color-1
 {
     cursor: pointer;
-    height: 35px;
-    min-width: 35px;
-    background-color: black;
+    height: 27px;
+    min-width: 27px;
     border-radius: 50%;
+    border: none;
 }
+
+.active
+{
+    border: 2px white solid;
+}
+
+.color-tags
+{
+    margin-top: 15px;
+}
+
+[contentEditable=true]:empty:not(:focus):before {
+    content: attr(data-text);
+    color:gray;
+
+  }
+  [contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+
+.return-notes
+{
+    position: fixed;
+    right: 3vh;
+    top: 3vh;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.return-notes:hover{
+    transform: scale(1.1);
+}
+
+.editor-save-button
+{
+    height: 80px;
+    display: flex;
+    align-items:flex-end;
+    justify-content: center;
+}
+
+.save-button-notes
+{
+    background-color: #4a86ff;
+    height: 46px;
+    border: none;
+    width:120px;
+    border-radius: 8px;
+    color: white;
+}
+

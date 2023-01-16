@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import "./homerighttop.css"
 
 function HomeRighttop() {
@@ -20,16 +19,6 @@ useEffect(()=>
   return (
     <>
     <div className="right-div-alpha-tab-main">
-
-   
-        <div className="right-div-alpha-tab">
-            <ul>
-            <Link to="/"><li>Dashboard</li></Link>
-                <li>List</li>
-                <li>Overview</li>
-                <Link to="/calender"><li>Calender</li></Link>
-            </ul>
-        </div>
         <div className="alpha-current">
             Date - {date}
         </div>
